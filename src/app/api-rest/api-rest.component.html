@@ -1,0 +1,56 @@
+<title>api-rest works!</title>
+
+<div class="container mt-5" style="margin-bottom: 2%;">
+  <p>Usuario:</p>
+  <input type="text" class="form-control my-2" [(ngModel)]="nameIn">
+  <button class="btn btn-info mb--2" style="margin-left: 0" (click)="search()">Buscar</button>
+</div>
+
+<div class="container" style="background-color:gainsboro; border-radius: 10px; margin-bottom: 3%;">
+
+  <div class="row" *ngIf="userFound; else elseCondi" >
+    <div class="col-sm-2" >
+      <img src={{urlImage}} alt="Foto Usuario" class="img-thumbnail" >
+    </div>
+    <div class="col-sm-3">
+      <p> Name: {{name}}</p>
+      <p> Nº Seguidores: {{nFollowers}}</p>
+      <p> Suiguiendo: {{nFollowing}}</p>
+    </div>
+
+  </div>
+  <ng-template #elseCondi>{{notifyUserNotFound}}</ng-template>
+</div>
+
+<!--<div class="container"  *ngIf="userFound">
+  <ul class="list-group">
+    <p>Repositorio  ------ Language</p>
+    <li class="list-group-item " *ngFor="let repositorio of repositorios">{{repositorio.name}} ------ {{repositorio.language}}</li>
+  </ul>
+</div>-->
+
+<div class="container" *ngIf="userFound">
+  <p style="font-weight: bold; text-align: center">Repositorios</p>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Language</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="active" *ngFor="let repositorio of repositorios">
+        <td>{{repositorio.name}}</td>
+        <td>{{repositorio.language}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+<!--<div>
+  <img src={{urlImage}} alt="Foto Usuario">
+  <p>{{name}}</p>
+  <p>{{nFollowers}}</p>
+
+</div>-->
+

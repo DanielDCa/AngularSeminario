@@ -1,0 +1,48 @@
+<!--<p>formulario-component works!</p>-->
+<br/>
+<p style="text-align: center;font-weight: bold;">Registro</p>
+
+<div class="container" style="max-width: 450px;">
+  <!--ngModel "banana In box" (Binding bidireccional que significa actualizaciones continuas del Ts al html y viceversa)-->
+  <form class="form-group" [formGroup]="formRegistro" (ngSubmit)="addUser()" >
+    <div class="form group">
+      <label for="Correo">Correo:</label>
+      <input type="text" name="correo" id="correo" placeholder="Correo" class="form-control" formControlName="Correo">
+    </div>
+    <div class="form group">
+      <label for="name">Nombre:</label>
+      <input type="text" name="nombre" id="nombre" placeholder="Nombre" class="form-control" formControlName="Nombre" >
+    </div>
+    <div class="form group">
+      <label for="apellido">Apellido:</label>
+      <input type="text" name="apellido" id="apellido" placeholder="Apellido" class="form-control" formControlName="Apellido" >
+    </div>
+    <div class="form group">
+      <label for="password">Contraseña:</label>
+      <input type="password" name="password" id="password" placeholder="Contraseña" class="form-control" formControlName="Password" >
+    </div>
+    <div class="form group">
+      <label for="Rpassword">Repetir Contraseña:</label>
+      <input type="password" name="Rpassword" id="Rpassword" placeholder="Contraseña" class="form-control" formControlName="Rpassword">
+    </div>
+
+    <br/>
+     <!--Event Binding (Evento click -- LLama a una función del .ts)-->
+    <div class="col">
+      <button class="btn btn-primary">Submit</button>
+    </div>
+
+    <div>
+          Valido : {{formRegistro.valid | json}}
+          <p *ngIf="noCoincideContrasena">Las contraseñas no coinciden</p>
+    </div>
+
+  </form>
+
+</div>
+
+<br/> <br/>
+<!--Declaración de variables i y usuarios, donde se hace referencia en el componenete hijo "usuario-lista.. "-->
+<!--La directiva Input() permite pasar información del padre al hijo, esto lo hacemos con un nombre identificativo [usuarioDeLista]="empleado" -->
+<app-usuario-lista-h *ngFor="let usuario of usuarios; let i=index" [usuarioDeLista]="usuario" [indice]="i"></app-usuario-lista-h>
+

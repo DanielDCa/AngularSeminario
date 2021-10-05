@@ -1,4 +1,6 @@
+
 import { Component } from '@angular/core';
+
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'myproyect';
+  //titulo = 'myproyect';
+  //Como atributo de este constructor estamos inyectando el servicio usuarioService(Que contiene los usuarios predefinidos )
+  constructor(){
+
+  };
+
+
 }
